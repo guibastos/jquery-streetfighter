@@ -53,3 +53,19 @@ body {
 	left: -212px;
 	float: left;
 }
+
+.text {
+	font-family: 'Rock Salt', cursive;
+	font-size: 30px;
+	font-weight: 500;
+	padding: 30px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 100px;
+}
+.text h2 {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	line-height: 140%;
+	letter-spacing: 0.03em;
+}
