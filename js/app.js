@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 		.mousedown(function() {
 			//making cool false
-			if (inState.cool) return
+			if (inState.cool) return;
 				inState.hadouken = true;
 			//end of making cool false
 			playHadouken();
@@ -55,7 +55,7 @@ $(document).ready(function() {
 	$(document)
 		.keydown(function(x){
 			//make cool state true
-			if(inState.hadouken) return
+			if(inState.hadouken) return;
 			inState.cool = true;
 			//end of making cool state true
 			var code = x.keyCode || e.which;
