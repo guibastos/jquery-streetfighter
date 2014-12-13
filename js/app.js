@@ -1,22 +1,30 @@
 $(document).ready(function() {
+	//creating inState variables
+	var inState = {
+		haouken: false,
+		cool: false
+	};
+	//end of creating inState variables	
 	$('.ryu')
 		.mouseenter(function() {
-		$('.ryu-still').hide();
-		$('.ryu-ready').show();
-		
-		$('.ryu-throwing').hide();
-		$('.hadouken').hide()
-		
+			$('.ryu-still').hide();
+			$('.ryu-ready').show();
+			$('.ryu-throwing').hide();
+			$('.hadouken').hide()
 			})
+
 		.mouseleave(function() {
 			$('.ryu-ready').hide();
 			$('.ryu-still').show();
-		
 			$('.ryu-throwing').hide();
 			$('.hadouken').hide()
-		
 			})
+
 		.mousedown(function() {
+			//making cool false
+			if (inState.cool) return
+				inState.hadouken = true;
+			//end of making cool false
 			playHadouken();
 			$('.ryu-ready').hide();
 			$('.ryu-still').hide();
@@ -29,18 +37,27 @@ $(document).ready(function() {
 					$(this).hide();
 					$(this).css('left', '-212px');
 					}
-				);
+					);
+				//making hadouken false
+				inState.hadouken = false;
 			})
+
 		.mouseup(function() {
 			$('.ryu-throwing').hide();
 			$('.ryu-still').hide();
 			$('.ryu-ready').show();
+			$('.ryu-throwing').hide();					
+			//making hadouken false
+			inState.hadouken = false;
 
-			$('.ryu-throwing').hide();
 		});
 	
 	$(document)
 		.keydown(function(x){
+			//make cool state true
+			if(inState.hadouken) return
+			inState.cool = true;
+			//end of making cool state true
 			var code = x.keyCode || e.which;
 			if(code == '88'){
 				playDireStraits();
@@ -61,6 +78,9 @@ $(document).ready(function() {
 				$('.ryu-throwing').hide();
 				$('.ryu-cool').hide();
 				x.stopPropagation();
+				//making cool false
+				inState.cool = false;
+				//end of making cool false
 				}
 			})
 });
